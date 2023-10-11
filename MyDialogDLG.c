@@ -20,6 +20,7 @@
 
 // USER START (Optionally insert additional includes)
 #include "Board_LED.h"                  // ::Board Support:LED
+#include "main.h"
 // USER END
 
 #include "DIALOG.h"
@@ -108,8 +109,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_0);
         if(CHECKBOX_IsChecked(hItem)) {
           LED_On(0);
+					HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET);
         } else {
           LED_Off(0);
+					HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET);
         }
         // USER END
         break;
